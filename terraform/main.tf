@@ -18,6 +18,10 @@ module "subnet" {
   cidr_block = var.subnet_cidr_block
   
 }
+module "ecr" {
+  source = "./ecr"
+  ecr_repository_name = var.ecr_repository_name
+}
 
 # module "ec2" {
 #   source = "./ec2"
