@@ -36,7 +36,8 @@ jobs:
       - name: Build & Push Frontend
         uses: docker/build-push-action@v5
         with:
-          context: ./frontend
+          context: ./Assignment1/frontend
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/react-frontend:latest
+                ${{ secrets.DOCKER_USERNAME }}/react-frontend:${{ github.run_number }}
+                ${{ secrets.DOCKER_USERNAME }}/react-frontend:latest
