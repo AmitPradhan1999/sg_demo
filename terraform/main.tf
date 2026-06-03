@@ -1,23 +1,23 @@
-module "s3bucket" {
-  source = "./s3bucket"
-  bucket_name = var.bucket_name
-  region      = var.region
-  environment   = var.environment
-}
+# module "s3bucket" {
+#   source = "./s3bucket"
+#   bucket_name = var.bucket_name
+#   region      = var.region
+#   environment   = var.environment
+# }
 
-module "vpc" {
-  source = "./vpc"
-  cidr_block = var.cidr_block
+# module "vpc" {
+#   source = "./vpc"
+#   cidr_block = var.cidr_block
   
-}
+# }
 
-module "subnet" {
-  depends_on = [ module.vpc ]
-  source = "./subnet"
-  vpc_id = module.vpc.vpc_id
-  cidr_block = var.subnet_cidr_block
+# module "subnet" {
+#   depends_on = [ module.vpc ]
+#   source = "./subnet"
+#   vpc_id = module.vpc.vpc_id
+#   cidr_block = var.subnet_cidr_block
   
-}
+# }
 module "ecr" {
   source = "./ecr"
   ecr_repository_name = var.ecr_repository_name
