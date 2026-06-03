@@ -27,16 +27,16 @@ jobs:
       - name: Build & Push Backend
         uses: docker/build-push-action@v5
         with:
-          context: ./backend
+          context: ./Assignment1/backend
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/springboot-backend:latest
+            ${{ secrets.DOCKER_USERNAME }}/springboot-backend:${{ github.run_number }}
 
       # ---------------- FRONTEND IMAGE ----------------
       - name: Build & Push Frontend
         uses: docker/build-push-action@v5
         with:
-          context: ./frontend
+          context: ./Assignment1/frontend
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/react-frontend:latest
+                ${{ secrets.DOCKER_USERNAME }}/react-frontend:${{ github.run_number }}
