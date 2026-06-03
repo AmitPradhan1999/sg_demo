@@ -30,7 +30,7 @@ jobs:
           context: ./Assignment1/backend
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/springboot-backend:latest
+            ${{ secrets.DOCKER_USERNAME }}/springboot-backend:${{ github.run_number }}
 
       # ---------------- FRONTEND IMAGE ----------------
       - name: Build & Push Frontend
@@ -40,4 +40,3 @@ jobs:
           push: true
           tags: |
                 ${{ secrets.DOCKER_USERNAME }}/react-frontend:${{ github.run_number }}
-                ${{ secrets.DOCKER_USERNAME }}/react-frontend:latest
