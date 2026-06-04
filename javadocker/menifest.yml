@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amit
+  namespace: amitcustom
+  labels:
+    app: amit
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: amit
+
+  template:
+    metadata:
+      labels:
+        app: amit
+
+    spec:
+      containers:
+        - name: amit
+          image: amitpradhan1999/assignment1-frontend:latest
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: IfNotPresent
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: amit
+  namespace: amitcustom
+
+spec:
+  type: LoadBalancer
+
+  selector:
+    app: amit
+
+  ports:
+    - protocol: TCP
+      port: 8080 
+      targetPort: 3000
+
+    #   ports:
+    # - protocol: TCP
+    #   port: 8080 //this should be hit in browser
+    #   targetPort: 3000 //this should match with container port and container port should be same as exposed port in docker file
+
+      
