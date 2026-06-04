@@ -23,10 +23,10 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build Docker image
-        run: docker build -t my-app ./Assignment1/backend
+        run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repository:${{ github.run_number }} ./Assignment1/backend
 
-      - name: Build Docker image
-        run: docker build -t my-app ./Assignment1/frontend
+      # - name: Build Docker image
+      #   run: docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repository:${{ github.run_number }} ./Assignment1/frontend
 
       - name: Tag image
         run: |
@@ -34,4 +34,4 @@ jobs:
 
       - name: Push image
         run: |
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/my-repo:${{ github.run_number }}
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repository:${{ github.run_number }}
