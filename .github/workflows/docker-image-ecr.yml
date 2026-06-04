@@ -23,10 +23,10 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build Docker image
-        run: docker build -t my-app ./Assignment/backend
+        run: docker build -t my-app ./Assignment1/backend
 
       - name: Build Docker image
-        run: docker build -t my-app ./Assignment/frontend
+        run: docker build -t my-app ./Assignment1/frontend
 
       - name: Tag image
         run: |
